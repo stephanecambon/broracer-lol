@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bro Racer</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://broracer.com/">
+<script>
+// broracer.lol a déménagé sur broracer.com. Cette page renvoie vers la même adresse sur broracer.com
+// (chemin, paramètres et #partie gardés), et passe les réglages gardés sur ce téléphone (prénom, couleur,
+// couronne, langue, sons…) dans « ?lol=… » : broracer.com les reprend puis nettoie l'adresse.
+(function () {
+  var url = 'https://broracer.com' + location.pathname + location.search, q = '';
+  try {
+    var o = {}, n = 0;
+    for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (/^bro-/.test(k) && k !== 'bro-log') { o[k] = localStorage.getItem(k); n++; } }
+    if (n) q = btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+  } catch (e) { /* navigation privée */ }
+  if (q) url += (location.search ? '&' : '?') + 'lol=' + encodeURIComponent(q);
+  location.replace(url + location.hash);
+})();
+</script>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b0a10;color:#ffd23f;font:16px/1.5 system-ui,sans-serif;text-align:center}a{color:#ff3d81}</style>
+</head>
+<body><p>Bro Racer déménage sur <a href="https://broracer.com/">broracer.com</a>…</p></body>
+</html>
